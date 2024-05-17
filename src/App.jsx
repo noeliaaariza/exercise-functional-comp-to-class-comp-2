@@ -1,8 +1,8 @@
+import { Component } from "react";
 import "./App.css";
 import Boton from "./componentes/Boton";
 import Contador from "./componentes/Contador";
 import logo from "./img/fcc_primary.svg";
-import { useState } from "react";
 
 class App extends Component {
   constructor() {
@@ -10,9 +10,15 @@ class App extends Component {
     this.state = {
       numClics: 0,
     };
+    this.handleClick = this.handleClick.bind(this);
+    this.reiniciarContador = this.reiniciarContador.bind(this);
   }
   handleClick() {
     this.setState(({ numClics }) => ({ numClics: numClics + 1 }));
+  }
+
+  reiniciarContador() {
+    this.setState({ numClics: 0 });
   }
   render() {
     return (
@@ -34,7 +40,7 @@ class App extends Component {
           <Boton
             texto="Reiniciar"
             esBotonDeClic={false}
-            handleClick={reiniciarContador}
+            handleClick={this.reiniciarContador}
           />
         </div>
       </div>
